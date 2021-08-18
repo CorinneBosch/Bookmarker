@@ -1,10 +1,13 @@
+require 'pg'
+
 class Bookmarks
 
   def self.all
-    [
-      "https://www.mozilla.org/en-GB/",
-      "https://ruby-doc.org/",
-      "https://www.codewars.com/"
-    ]
+    conn = PG.connect(dbname: 'bookmark_manager')
+    result = conn.exec( 'SELECT * FROM bookmarks')
+    result.map { |bookmarks|  bookmarks['url'] }
   end
 end
+
+# puts Bookmarks.new.all
+# puts Bookmarks.all
