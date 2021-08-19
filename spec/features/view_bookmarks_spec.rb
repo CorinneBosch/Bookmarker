@@ -9,7 +9,7 @@ feature 'View bookmarks' do
     conn.exec("INSERT INTO bookmarks VALUES(3, 'https://www.codewars.com/');")
     conn.exec("INSERT INTO bookmarks VALUES(4, 'http://www.makersacademy.com');")
 
-    visit('/bookmarks')
+    visit('/bookmarks/view')
 
     expect(page).to have_content("https://www.mozilla.org/en-GB/")
     expect(page).to have_content("https://ruby-doc.org/")

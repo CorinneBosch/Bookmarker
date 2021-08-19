@@ -1,5 +1,3 @@
-require 'web_helper'
-
 feature 'adding bookmarks' do
 
   scenario 'able to add bookmarks in form' do
