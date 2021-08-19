@@ -5,6 +5,12 @@ describe Bookmarks do
   let(:bookmarks) { Bookmarks.all }
 
   context '#self.all' do
+    conn = PG.connect(dbname: 'bookmark_manager_test')
+    conn.exec("INSERT INTO bookmarks (url) VALUES('https://www.mozilla.org/en-GB/');")
+    conn.exec("INSERT INTO bookmarks (url) VALUES('https://ruby-doc.org/');")
+    conn.exec("INSERT INTO bookmarks (url) VALUES('https://www.codewars.com/');")
+    conn.exec("INSERT INTO bookmarks (url) VALUES('http://www.makersacademy.com');")
+
     it 'returns all bookmarks' do
       expect(bookmarks).to include("https://www.mozilla.org/en-GB/")
       expect(bookmarks).to include("https://ruby-doc.org/")
