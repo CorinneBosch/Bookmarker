@@ -6,7 +6,12 @@
   </head>
   <body>
     <section id='box'>
-      <%= @bookmarks %>
+      <form action='/bookmarks/add' method='get'>
+        <button type='submit' style>Add Bookmark</button>
+      </form>
+      <form action='/bookmarks/view' method='get'>
+        <button type='submit' style>View Bookmarks</button>
+      </form>
     </section>
   </body>
 </html>

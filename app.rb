@@ -7,11 +7,21 @@ class BookmarkManager < Sinatra::Base
     register Sinatra::Reloader
   end
 
-  get '/bookmarks' do
-    # p ENV
-
-    @bookmarks = Bookmarks.all
+  get '/' do
     erb(:'bookmarks/index')
+  end
+
+  get '/bookmarks/add' do
+    erb(:'bookmarks/add')
+  end
+
+  post '/' do
+
+  end
+
+  get '/bookmarks/view' do
+    @bookmarks = Bookmarks.all
+    erb(:'bookmarks/views')
   end
   
   run! if app_file == $0
