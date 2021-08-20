@@ -1,28 +1,34 @@
 require 'bookmarks'
+require 'setup_test_database'
 
 describe Bookmarks do
-
-  let(:bookmarks) { Bookmarks.all}
-  context '#self.all' do
+  describe '#self.all' do
     conn = PG.connect(dbname: 'bookmark_manager_test')
-    conn.exec("INSERT INTO bookmarks (url) VALUES('https://www.mozilla.org/en-GB/');")
-    conn.exec("INSERT INTO bookmarks (url) VALUES('https://ruby-doc.org/');")
-    conn.exec("INSERT INTO bookmarks (url) VALUES('https://www.codewars.com/');")
-    conn.exec("INSERT INTO bookmarks (url) VALUES('http://www.makersacademy.com');")
 
+    bookmark = Bookmarks.create(url: 'https://www.mozilla.org/en-GB/', title: 'Firefox')
+    Bookmarks.create(url: 'https://ruby-doc.org/', title: 'Ruby Bible')
+    Bookmarks.create(url: 'https://www.codewars.com/', title: 'Codewars')
+    Bookmarks.create(url: 'http://www.makersacademy.com', title: 'Makers')
+
+    bookmark = Bookmarks.all
     it 'returns all bookmarks' do
-      expect(bookmarks).to include("https://www.mozilla.org/en-GB/")
-      expect(bookmarks).to include("https://ruby-doc.org/")
-      expect(bookmarks).to include("https://www.codewars.com/")
-      expect(bookmarks).to include("http://www.makersacademy.com")
+      expect(bookmark.length).to eq 4
+      expect(bookmark.first).to be_a Bookmarks
+      expect(bookmark.first.id).to eq bookmark.id
+      expect(bookmark.first.title).to eq 'Firefox'
+      expect(bookmark.first.url).to eq 'https://www.mozilla.org/en-GB/'
     end
   end
 
-  context '#Bookmark.create' do
+  describe '#Bookmark.create' do
 
     it 'adds bookmarks to bookmark_manager database' do
-      Bookmarks.create(url: 'https;//www.google.com')
-      expect(bookmarks).to include('https;//www.google.com')
+      bookmark = Bookmarks.create(url: 'https://www.google.com', title: 'Google')
+      presised_date =  PG.connect(dbname: 'bookmark_manager_test').query("SELECT * FROM bookmarks WHERE id = #{bookmark.id};")
+      expect(bookmark).to be_a Bookmarks
+      expect(bookmark.id).to persisted_data.first['id']
+      expect(bookmark.title).to eq 'Google'
+      expect(bookmark.url).to eq 'https;//www.google.com'
     end
   end
 end

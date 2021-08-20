@@ -7,7 +7,15 @@
   <body>
     <section id='box'>
       <form action='/view' method='get'>
-        <%= @bookmarks %>
+        <ul>
+        <% @bookmarks.each do |bookmark| %>
+          <li>
+            <a href="<%= bookmark.url %>">
+              <%= bookmark.title %>
+            </a>
+          </li>
+        <% end %>
+        </ul>
       </form>
     </section>
   </body>

@@ -3,16 +3,16 @@ require 'pg'
 feature 'View bookmarks' do
   scenario 'able to view the bookmarks' do
 
-    conn = PG.connect(dbname: 'bookmark_manager_test')
-    conn.exec("INSERT INTO bookmarks VALUES(1, 'https://www.mozilla.org/en-GB/');")
-    conn.exec("INSERT INTO bookmarks VALUES(2, 'https://ruby-doc.org/');")
-    conn.exec("INSERT INTO bookmarks VALUES(3, 'https://www.codewars.com/');")
-    conn.exec("INSERT INTO bookmarks VALUES(4, 'http://www.makersacademy.com');")
+    Bookmarks.create(url: 'https://www.mozilla.org/en-GB/', title: 'Firefox')
+    Bookmarks.create(url: 'https://ruby-doc.org/', title: 'Ruby Bible')
+    Bookmarks.create(url: 'https://www.codewars.com/', title: 'Codewars')
+    Bookmarks.create(url: 'http://www.makersacademy.com', title: 'Makers')
 
     visit('/bookmarks/view')
 
-    expect(page).to have_content("https://www.mozilla.org/en-GB/")
-    expect(page).to have_content("https://ruby-doc.org/")
-    expect(page).to have_content("https://www.codewars.com/")
+    expect(page).to have_link('Firefox', href: "https://www.mozilla.org/en-GB/")
+    expect(page).to have_link('Ruby Bible', href: "https://ruby-doc.org/")
+    expect(page).to have_link('Codewars', href: "https://www.codewars.com/")
+    expect(page).to have_link('Makers', href: "http://www.makersacademy.com")
   end
 end
