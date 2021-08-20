@@ -3,7 +3,7 @@ require 'setup_test_database'
 
 describe Bookmarks do
   describe '#self.all' do
-    conn = PG.connect(dbname: 'bookmark_manager_test')
+    # conn = PG.connect(dbname: 'bookmark_manager_test')
 
     bookmark = Bookmarks.create(url: 'https://www.mozilla.org/en-GB/', title: 'Firefox')
     Bookmarks.create(url: 'https://ruby-doc.org/', title: 'Ruby Bible')
@@ -28,7 +28,7 @@ describe Bookmarks do
       expect(bookmark).to be_a Bookmarks
       expect(bookmark.id).to persisted_data.first['id']
       expect(bookmark.title).to eq 'Google'
-      expect(bookmark.url).to eq 'https;//www.google.com'
+      expect(bookmark.url).to eq 'https://www.google.com'
     end
   end
 end
