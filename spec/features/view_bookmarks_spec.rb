@@ -1,4 +1,5 @@
 require 'pg'
+require 'bookmarks'
 
 feature 'View bookmarks' do
   scenario 'able to view the bookmarks' do
