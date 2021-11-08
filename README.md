@@ -34,7 +34,7 @@ Check out our user stories, domain model and MVC pattern here: [Workflow Mindmap
 
 1. **Fork** this [Bookmarker repository](https://github.com/CorinneBosch/Bookmarker/) 
 2. Then clone **your** fork to your computer.
-3. Ensure you have `Ruby` and `rspec` installed. Check ruby version with `ruby-v`
+3. Ensure you have `Ruby` and `rspec` installed. Check ruby version with `ruby -v`
 4. Install bundler if you haven't already.
 `gem install bundler`
 5. Install the gems required by this repository.
