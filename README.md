@@ -55,7 +55,7 @@ Then create a second database `bookmark_manager_test` and reapeat the process me
 CREATE DATABASE bookmark_manager_test;
 ```
 
-## Interact with the program
+## Interact with the programme
 
 Open the application in your terminal with `ruby app.rb`
 
