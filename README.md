@@ -2,15 +2,19 @@ Bookmark Manager
 ==================
 
 ```
-        .--.           .---.        .-.
-    .---|--|   .-.     | A |  .---. |~|    .--.
- .--|===|Ch|---|_|--.__| S |--|:::| |~|-==-|==|---.
- |%%|NT2|oc|===| |~~|%%| C |--|   |_|~|CATS|  |___|-.
- |  |   |ah|===| |==|  | I |  |:::|=| |    |GB|---|=|
- |  |   |ol|   |_|__|  | I |__|   | | |    |  |___| |
+        .--.
+        |  |           .---.        .-.
+    .---|Bo|   .-.     |   |  .---. |~|    .--.
+ .--|===|ok|---|_|--.__| R |--|:::| |~|-==-|==|---.
+ |%%|SQL|ma|===| |~~|%%| U |--|   |_|~|CODE|  |___|-.
+ |  |   |rk|===| |==|  | B |  |:::|=| |    |GB|---|=|
+ |  |   |er|   |_|__|  | Y |__|   | | |    |  |___| |
  |~~|===|--|===|~|~~|%%|~~~|--|:::|=|~|----|==|---|=|
  ^--^---'--^---^-^--^--^---'--^---^-^-^-==-^--^---^-'
 ```
+______
+ 
+[Planning](#Planning) | [Set up](#Setup) | [DB Connection](#DB) | [Interact](#Interact) | [Run Tests](#Tests) 
 
 ## Afternoon challenge: Bookmarker
 In this challenge we learned & implementing the follwoing practices while pair programming:
@@ -26,11 +30,11 @@ Goals:
 - Follow an effective debugging process for database applications
 - Explain the basics of how databases work (e.g. tables, SQL, basic relationships between tables)
 
-## Planning
+## <a name="Planning">Planning</a>
 
 Check out our user stories, domain model and MVC pattern here: [Workflow Mindmap](https://github.com/CorinneBosch/Bookmarker/blob/main/public/Workflow_mindmap.png)
 
-## Setup
+## <a name="Setup">Set up</a>
 
 1. **Fork** this [Bookmarker repository](https://github.com/CorinneBosch/Bookmarker/) 
 2. Then clone **your** fork to your computer.
@@ -40,7 +44,7 @@ Check out our user stories, domain model and MVC pattern here: [Workflow Mindmap
 5. Install the gems required by this repository.
 `bundle install`
 
-## Setup database
+## <a name="DB">Database connection</a>
 
 Connect to `psql` and create a `bookmark_manager` database:
 
@@ -54,17 +58,16 @@ Then create a second database `bookmark_manager_test` and reapeat the process me
 ```
 CREATE DATABASE bookmark_manager_test;
 ```
-
-## Interact with the programme
+## <a name="Interact">Interact with the programme</a>
 
 Open the application in your terminal with `ruby app.rb`
 
-Direct in your browser to `http://localhost:4567`.
+Direct in your browser to `http://localhost:4567`.\
 Now you are free to add new bookmarks or view existing ones.
 
 You can frature test and run the bookmarker program in any `code editor` or `IRB`. 
 
-## Run test 
+## <a name="Tests">Run Tests</a>
 
 To test all units and features at once in your terminal.
 Print out the format documentation with the -fd shortcut.
